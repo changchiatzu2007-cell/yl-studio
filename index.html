@@ -1,46 +1,176 @@
-<!doctype html>
-<html lang="zh-Hant">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Letter Pronunciation</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YL Studio | 鋼琴譜客製化專家</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f2e9dc; /* 參考 Logo 的米色 */
+            --primary-color: #1a1a1a; /* 深黑色 */
+            --accent-color: #555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* Logo 區域 */
+        .logo-area img {
+            max-width: 180px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        /* 內容區塊動畫 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            padding: 100px 0 60px;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* 服務項目 */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+            margin: 60px 0;
+        }
+
+        .service-item {
+            border-left: 1px solid var(--primary-color);
+            padding-left: 20px;
+        }
+
+        /* 價格與流程 */
+        .info-section {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 2px;
+            margin: 40px 0;
+        }
+
+        /* 按鈕設計 */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        footer {
+            margin-top: 100px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            padding-bottom: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .services { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <header class="wrap header">
-    <div class="brand">A–Z 自然發音</div>
-    <div class="controls">
-      <label class="select">
-        <span>Voice</span>
-        <select id="voiceSelect"></select>
-      </label>
 
-      <label class="slider">
-        <span>Speed</span>
-        <input id="rate" type="range" min="0.7" max="1.2" step="0.05" value="0.95">
-      </label>
+<div class="container">
+    <header class="fade-in">
+        <div class="logo-area">
+            <img src="YL.jpg" alt="YL Studio Logo">
+        </div>
+        <p class="hero-text">讓每一段旋律，以最適合你的姿態躍然紙上。</p>
+    </header>
 
-      <button id="stopBtn" class="btn">Stop</button>
-    </div>
-  </header>
+    <main>
+        <section class="services fade-in">
+            <div class="service-item">
+                <h3>專屬編譜</h3>
+                <p>依據您的演奏程度量身打造，不論是初學者或表演需求都能完美應對。</p>
+            </div>
+            <div class="service-item">
+                <h3>靈活調性</h3>
+                <p>流行、獨立樂團歌曲皆可編寫，並可自由指定您需要的升降 Key。</p>
+            </div>
+        </section>
 
-  <main class="wrap">
-    <section class="card">
-      <h1>點字母播放自然發音</h1>
-      <p class="muted">
-        這個版本使用瀏覽器內建語音（SpeechSynthesis），不需要額外音檔。
-        若你想改成 /ei/、/bi/ 這種「字母名稱」或改成「字母音」（phonics），我也能幫你切換。
-      </p>
-    </section>
+        <section class="info-section fade-in">
+            <h3>訂製細節</h3>
+            <p><strong>標準定價：</strong>歌曲長度 5 分鐘內 一律 $149</p>
+            <p><strong>交付方式：</strong>專業五線譜排版，紙本郵寄交付</p>
+            <p style="font-size: 0.9rem; color: #777;">超過 5 分鐘或特殊需求，歡迎透過賣場詢問評估</p>
+        </section>
 
-    <section id="grid" class="grid" aria-label="letters"></section>
+        <a href="你的賣場連結" class="cta-button fade-in">前往賣場訂製</a>
+    </main>
 
-    <section class="card status">
-      <div>現在播放：<strong id="now">（尚未播放）</strong></div>
-      <div class="muted small">提示：手機上第一次可能需要先點一下按鈕才會允許播放。</div>
-    </section>
-  </main>
+    <footer class="fade-in">
+        <p>© 2025 YL Studio. All Rights Reserved.</p>
+    </footer>
+</div>
 
-  <script src="script.js"></script>
+<script>
+    // 簡單的捲動偵測動畫
+    document.addEventListener('DOMContentLoaded', function() {
+        const observers = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observers.observe(el);
+        });
+    });
+</script>
+
 </body>
 </html>
